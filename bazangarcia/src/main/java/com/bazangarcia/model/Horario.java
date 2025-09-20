@@ -6,28 +6,29 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+import java.time.LocalTime;
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
-public class cursos {
+public class Horario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int IDcursos;
+    private int IDhorarios;
 
-    @Column(nullable = false, length = 70)
-    private String Nombre;
-
-    @Column(nullable = false, length = 10 )
-    private String Codigo;
+    @Column(nullable = false, length = 30)
+    private String Dia_semana;
 
     @Column(nullable = false)
-    private int Credito;
+    private LocalTime Hora_inicio;
 
-    @Column (nullable = false, length = 30)
-    private String Semestre;
+    @Column(nullable = false)
+    private LocalTime Hora_fin;
 
+    @Column(nullable = false, length = 30)
+    private String Aula;
 }

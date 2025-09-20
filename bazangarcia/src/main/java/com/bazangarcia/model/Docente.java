@@ -2,14 +2,13 @@ package com.bazangarcia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.Length;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class docentes {
+public class Docente {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @EqualsAndHashCode.Include

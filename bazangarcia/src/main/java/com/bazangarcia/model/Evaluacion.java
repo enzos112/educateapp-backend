@@ -7,29 +7,24 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-
-public class horarios {
+public class Evaluacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int IDhorarios;
+    private int IDevaluaciones;
 
     @Column(nullable = false, length = 30)
-    private String Dia_semana;
+    private String Tipo_evaluación;
 
     @Column(nullable = false)
-    private LocalTime Hora_inicio;
+    private LocalDate Fecha;
 
     @Column(nullable = false)
-    private LocalTime Hora_fin;
-
-    @Column(nullable = false, length = 30)
-    private String Aula;
+    private int Nota;
 }

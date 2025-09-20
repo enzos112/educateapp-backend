@@ -6,25 +6,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class evaluaciones {
+
+public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private int IDevaluaciones;
+    private int IDcursos;
 
-    @Column(nullable = false, length = 30)
-    private String Tipo_evaluación;
+    @Column(nullable = false, length = 70)
+    private String Nombre;
+
+    @Column(nullable = false, length = 10 )
+    private String Codigo;
 
     @Column(nullable = false)
-    private LocalDate Fecha;
+    private int Credito;
 
-    @Column(nullable = false)
-    private int Nota;
+    @Column (nullable = false, length = 30)
+    private String Semestre;
+
 }

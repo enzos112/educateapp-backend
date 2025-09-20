@@ -1,4 +1,4 @@
 package com.bazangarcia.service.interfaz;
 
-public interface IdocentesService {
+public interface ICursoService {
 }
