@@ -31,4 +31,9 @@ public class Horario {
 
     @Column(nullable = false, length = 30)
     private String Aula;
+
+    // Relación con Curso
+    @ManyToOne
+    @JoinColumn(name = "id_curso", nullable = false)
+    private Curso curso;
 }

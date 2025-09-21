@@ -15,7 +15,7 @@
     @Entity
     @Table(name = "estudiantes")
     @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-    public class Estudiante {
+    public class Estudiante{
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @EqualsAndHashCode.Include

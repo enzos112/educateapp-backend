@@ -7,5 +7,7 @@ public interface IMatriculaService {
     Matricula findById(Integer id);
     Matricula save(Matricula matricula);
     Matricula update(Integer id, Matricula matricula);
-    void DeleteById(Integer id);
+    void deleteById(Integer id);
+    // Método específico para matrículas activas
+    List<Matricula> findActiveMatriculas();
 }

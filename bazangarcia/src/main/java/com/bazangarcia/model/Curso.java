@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -29,5 +31,18 @@ public class Curso {
 
     @Column (nullable = false, length = 30)
     private String Semestre;
+
+    // Relación con Docente
+    @ManyToOne
+    @JoinColumn(name = "id_docente", nullable = false)
+    private Docente docente;
+
+    // Relación con Matrículas
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Matricula> matriculas;
+
+    // Relación con Horarios
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Horario> horarios;
 
 }

@@ -1,5 +1,8 @@
 package com.bazangarcia.service.implementation;
+import com.bazangarcia.dto.request.EstudianteRequestDto;
+import com.bazangarcia.dto.response.EstudianteResponseDto;
 import com.bazangarcia.exception.ResourceNotFoundException;
+import com.bazangarcia.mapper.EstudianteMapper;
 import com.bazangarcia.service.interfaz.IEstudianteService;
 import com.bazangarcia.repository.EstudianteRepository;
 import com.bazangarcia.model.Estudiante;
@@ -12,6 +15,15 @@ public class EstudianteService implements IEstudianteService {
 
     @Autowired
     private EstudianteRepository estudianteRepository;
+    @Autowired
+    private EstudianteMapper estudianteMapper;
+
+    public EstudianteResponseDto crearEstudiante (EstudianteRequestDto dto){
+        Estudiante estudiante= estudianteMapper.toEntity(dto);
+        Estudiante estudianteGuardado = estudianteRepository.save(estudiante);
+        EstudianteResponseDto responseDto=estudianteMapper.toDto(estudianteGuardado);
+        return responseDto;
+    }
 
     @Override
     public List<Estudiante> findAll() {
@@ -42,6 +54,17 @@ public class EstudianteService implements IEstudianteService {
         estudianteExiste.setEstado(estudiante.getEstado());
 
         return estudianteRepository.save(estudianteExiste);
+    }
+
+
+    public EstudianteResponseDto actualizarEstudiante(Integer id, EstudianteRequestDto dto) {
+        Estudiante estudiante= estudianteRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Estudiante", "id", id));
+        estudiante.setNombre(dto.getNombre());
+        estudiante.setApellido(dto.getApellido());
+        estudiante.setTelefono(dto.getTelefono());
+        estudiante.setCorreo(dto.getCorreo());
+        estudianteRepository.save(estudiante);
+        return estudianteMapper.toDto(estudiante);
     }
 
     @Override

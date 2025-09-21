@@ -27,4 +27,9 @@ public class Evaluacion {
 
     @Column(nullable = false)
     private int Nota;
+
+    // Relación con Matricula
+    @ManyToOne
+    @JoinColumn(name = "id_matricula", nullable = false)
+    private Matricula matricula;
 }
