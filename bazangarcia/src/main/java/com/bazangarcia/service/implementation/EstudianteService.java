@@ -1,4 +1,5 @@
 package com.bazangarcia.service.implementation;
+import com.bazangarcia.exception.ResourceNotFoundException;
 import com.bazangarcia.service.interfaz.IEstudianteService;
 import com.bazangarcia.repository.EstudianteRepository;
 import com.bazangarcia.model.Estudiante;
@@ -19,7 +20,7 @@ public class EstudianteService implements IEstudianteService {
 
     @Override
     public Estudiante findById(Integer id) {
-        return estudianteRepository.findById(id).orElse(null);
+        return estudianteRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Estudiante", "id", id));
     }
 
     @Override
@@ -29,11 +30,7 @@ public class EstudianteService implements IEstudianteService {
 
     @Override
     public Estudiante update(Integer id, Estudiante estudiante) {
-        Estudiante estudianteExiste= estudianteRepository.findById(id).orElse(null);
-        if (estudianteExiste==null)
-        {
-            return null;
-        }
+        Estudiante estudianteExiste = estudianteRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Estudiante", "id", id));
         estudianteExiste.setNombre(estudiante.getNombre());
         estudianteExiste.setApellido(estudiante.getApellido());
         estudianteExiste.setDni(estudiante.getDni());
@@ -49,6 +46,8 @@ public class EstudianteService implements IEstudianteService {
 
     @Override
     public void deleteById(Integer id) {
-        estudianteRepository.deleteById(id);
+        Estudiante estudiante = estudianteRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Estudiante", "id", id));
+        estudianteRepository.delete(estudiante);
     }
 }
