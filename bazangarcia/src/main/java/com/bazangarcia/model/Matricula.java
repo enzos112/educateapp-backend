@@ -36,6 +36,6 @@ public class Matricula {
 
     // Relación con Curso
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curso_id", nullable = false)
+    @JoinColumn(name = "curso_id", nullable = true)
     private Curso curso;
 }

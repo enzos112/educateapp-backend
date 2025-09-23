@@ -10,11 +10,9 @@ public class MatriculaResponseDto {
     private LocalDate fechaMatricula;
     private Boolean estado;
 
-    // Información básica del estudiante
     private String estudianteNombre;
     private String estudianteApellido;
 
-    // Información básica del curso
     private String cursoNombre;
     private String cursoCodigo;
 }

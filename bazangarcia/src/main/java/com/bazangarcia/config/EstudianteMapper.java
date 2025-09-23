@@ -1,4 +1,4 @@
-package com.bazangarcia.mapper;
+package com.bazangarcia.config;
 
 import com.bazangarcia.dto.response.EstudianteResponseDto;
 import org.springframework.stereotype.Component;

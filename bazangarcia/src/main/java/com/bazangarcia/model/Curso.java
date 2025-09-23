@@ -24,7 +24,7 @@ public class Curso {
     private String Nombre;
 
     @Column(nullable = false, length = 10 )
-    private String Codigo;
+    private String codigo;
 
     @Column(nullable = false)
     private int Credito;
@@ -34,7 +34,7 @@ public class Curso {
 
     // Relación con Docente
     @ManyToOne
-    @JoinColumn(name = "id_docente", nullable = false)
+    @JoinColumn(name = "id_docente", nullable = true)
     private Docente docente;
 
     // Relación con Matrículas

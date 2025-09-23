@@ -2,7 +2,7 @@ package com.bazangarcia.controller;
 
 import com.bazangarcia.dto.request.EstudianteRequestDto;
 import com.bazangarcia.dto.response.EstudianteResponseDto;
-import com.bazangarcia.mapper.EstudianteMapper;
+import com.bazangarcia.config.EstudianteMapper;
 import com.bazangarcia.model.Estudiante;
 import com.bazangarcia.service.implementation.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
